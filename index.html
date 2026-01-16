@@ -416,15 +416,21 @@
                             <input type="email" name="email" required class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none focus:ring-1 focus:ring-cyber-green transition-colors" placeholder="name@company.com">
                         </div>
                     </div>
-                    
-                    <div>
-                        <label class="block text-xs font-mono text-cyber-green mb-2">SECTOR OF INTEREST</label>
-                        <select name="service" class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none">
-                            <option value="Vulnerability Management">Vulnerability Management</option>
-                            <option value="Vendor Risk Assessment">Vendor Risk Assessment</option>
-                            <option value="Security Training">Security Training</option>
-                            <option value="General Inquiry">General Inquiry</option>
-                        </select>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-mono text-cyber-green mb-2">COMM LINK (PHONE)</label>
+                            <input type="tel" name="phone" class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none focus:ring-1 focus:ring-cyber-green transition-colors" placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-cyber-green mb-2">SECTOR OF INTEREST</label>
+                            <select name="service" class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none">
+                                <option value="Vulnerability Management">Vulnerability Management</option>
+                                <option value="Vendor Risk Assessment">Vendor Risk Assessment</option>
+                                <option value="Security Training">Security Training</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div>
