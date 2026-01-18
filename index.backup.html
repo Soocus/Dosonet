@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosonet | Information Security Consulting</title>
+    <meta name="description" content="DosoNet provides elite Information Security Consulting, Vendor Risk Management, and Vulnerability Assessment services. Fortify your digital perimeter with certified cybersecurity experts.">
+    <meta name="keywords" content="cybersecurity, information security, vendor risk management, vulnerability assessment, security consulting, penetration testing">
+    <meta property="og:title" content="DosoNet | Information Security Consulting">
+    <meta property="og:description" content="Elite Information Security, Vendor Risk Management, and Vulnerability Assessment services for the modern enterprise.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#0a0a0a',
+                            dark: '#111111',
+                            gray: '#1a1a1a',
+                            green: '#00ff41',
+                            greenDim: 'rgba(0, 255, 65, 0.1)',
+                            blue: '#00f0ff',
+                            blueDim: 'rgba(0, 240, 255, 0.1)',
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ff41; 
+        }
+
+        /* Techy Grid Background */
+        .tech-grid {
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+            border-color: #00ff41;
+        }
+
+        /* Glitch Effect Class */
+        .glitch-wrapper {
+            position: relative;
+        }
+        
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyber-green selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-cyber-black/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-mono font-bold text-white tracking-tighter flex items-center gap-2">
+                        <i class="fas fa-shield-halved text-cyber-green"></i>
+                        DosoNet<span class="text-cyber-green animate-pulse">_</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#services" class="hover:text-cyber-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="#training" class="hover:text-cyber-green transition-colors px-3 py-2 rounded-md text-sm font-medium">Training</a>
+                        <a href="#about" class="hover:text-cyber-green transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#contact" class="bg-cyber-green text-black hover:bg-white transition-all px-4 py-2 rounded-none text-sm font-bold font-mono border border-transparent hover:border-cyber-green">
+                            GET SECURE
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-cyber-black border-b border-white/10" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#services" class="text-gray-300 hover:text-cyber-green block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#training" class="text-gray-300 hover:text-cyber-green block px-3 py-2 rounded-md text-base font-medium">Training</a>
+                <a href="#about" class="text-gray-300 hover:text-cyber-green block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#contact" class="text-cyber-green block px-3 py-2 rounded-md text-base font-medium">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative min-h-screen flex items-center justify-center overflow-hidden tech-grid pt-20">
+        <div id="canvas-container">
+            <canvas id="networkCanvas"></canvas>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-cyber-green/30 bg-cyber-green/10 backdrop-blur-sm">
+                <span class="text-cyber-green font-mono text-xs tracking-widest uppercase">System Status: Secure</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500">
+                    FORTIFY YOUR
+                </span>
+                <br />
+                <span class="text-cyber-green glow-text font-mono">DIGITAL PERIMETER</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
+                Elite Information Security, Vendor Risk Management, and Vulnerability Assessment services for the modern enterprise.
+            </p>
+            
+            <div class="mt-10 flex justify-center gap-4 flex-col sm:flex-row">
+                <a href="#services" class="px-8 py-4 bg-cyber-green text-black font-bold font-mono rounded-sm hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,255,65,0.3)]">
+                    EXPLORE SERVICES
+                </a>
+                <a href="#contact" class="px-8 py-4 bg-transparent border border-gray-600 text-white font-bold font-mono rounded-sm hover:border-cyber-green hover:text-cyber-green transition-all">
+                    CONSULTATION
+                </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-20 grid grid-cols-2 gap-8 md:grid-cols-4 border-t border-white/10 pt-10">
+                <div>
+                    <div class="text-3xl font-mono font-bold text-white">24/7</div>
+                    <div class="text-xs text-cyber-green uppercase tracking-wider mt-1">Monitoring</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-mono font-bold text-white">100+</div>
+                    <div class="text-xs text-cyber-green uppercase tracking-wider mt-1">Audits Passed</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-mono font-bold text-white">0</div>
+                    <div class="text-xs text-cyber-green uppercase tracking-wider mt-1">Breaches</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-mono font-bold text-white">100%</div>
+                    <div class="text-xs text-cyber-green uppercase tracking-wider mt-1">Compliance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services" class="py-24 bg-cyber-dark relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyber-green to-transparent opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-cyber-green font-mono text-sm tracking-widest uppercase mb-2">Our Capabilities</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white">Comprehensive Defense Protocols</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="card-hover bg-cyber-gray p-8 rounded-lg border border-white/5 relative group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-lock text-6xl text-cyber-green"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-cyber-green/10 rounded-lg flex items-center justify-center mb-6 text-cyber-green">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4 font-mono">InfoSec Consulting</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-green mr-2 text-xs"></i> Security Architecture Review</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-green mr-2 text-xs"></i> Compliance (ISO 27001, SOC2)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-green mr-2 text-xs"></i> Incident Response Planning</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-green mr-2 text-xs"></i> Policy Development</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card-hover bg-cyber-gray p-8 rounded-lg border border-white/5 relative group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-handshake text-6xl text-cyber-blue"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center mb-6 text-cyber-blue">
+                        <i class="fas fa-file-contract text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4 font-mono">Vendor Risk Mgmt</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-blue mr-2 text-xs"></i> Third-Party Assessments</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-blue mr-2 text-xs"></i> Supply Chain Auditing</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-blue mr-2 text-xs"></i> Contract Security Clauses</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-blue mr-2 text-xs"></i> Continuous Monitoring</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="card-hover bg-cyber-gray p-8 rounded-lg border border-white/5 relative group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-bug text-6xl text-red-500"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-6 text-red-500">
+                        <i class="fas fa-crosshairs text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4 font-mono">Vulnerability Mgmt</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-red-500 mr-2 text-xs"></i> Automated Scanning</li>
+                        <li class="flex items-center"><i class="fas fa-check text-red-500 mr-2 text-xs"></i> Penetration Testing</li>
+                        <li class="flex items-center"><i class="fas fa-check text-red-500 mr-2 text-xs"></i> Patch Management Strategy</li>
+                        <li class="flex items-center"><i class="fas fa-check text-red-500 mr-2 text-xs"></i> Threat Intelligence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Training Section -->
+    <div id="training" class="py-24 bg-black relative overflow-hidden">
+        <!-- Decorational elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-cyber-green/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="inline-block px-3 py-1 border border-cyber-blue/30 text-cyber-blue text-xs font-mono mb-4">KNOWLEDGE TRANSFER</div>
+                    <h2 class="text-4xl font-bold text-white mb-6">Security Awareness & Technical Training</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Human error remains the largest security vector. DosoNet empowers your team with the knowledge to recognize threats before they execute. We offer both general awareness programs and deep-dive technical workshops for IT staff.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-2 h-2 bg-cyber-blue rounded-full shadow-[0_0_10px_#00f0ff]"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold font-mono">Phishing Simulations</h4>
+                                <p class="text-sm text-gray-500">Real-world scenarios to test and educate employees.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-2 h-2 bg-cyber-blue rounded-full shadow-[0_0_10px_#00f0ff]"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold font-mono">Secure Coding Workshops</h4>
+                                <p class="text-sm text-gray-500">For developers, covering OWASP Top 10 and more.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-2 h-2 bg-cyber-blue rounded-full shadow-[0_0_10px_#00f0ff]"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold font-mono">Executive Risk Training</h4>
+                                <p class="text-sm text-gray-500">High-level briefings on liability and governance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 w-full">
+                    <div class="bg-cyber-gray border border-white/10 rounded-xl p-2 relative">
+                        <!-- Code Terminal Look -->
+                        <div class="bg-black rounded-lg p-6 font-mono text-sm h-80 overflow-y-auto">
+                            <div class="flex gap-2 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="text-gray-400">$ dosonet --init-training</div>
+                            <div class="text-cyber-blue mt-2">> Initializing Training Modules...</div>
+                            <div class="text-cyber-green mt-1">> Module 1: Social Engineering [LOADED]</div>
+                            <div class="text-cyber-green mt-1">> Module 2: Password Hygiene [LOADED]</div>
+                            <div class="text-cyber-green mt-1">> Module 3: Ransomware Defense [LOADED]</div>
+                            <div class="text-gray-400 mt-4">$ run simulation --target=staff</div>
+                            <div class="text-yellow-400 mt-2">> WARNING: Simulation active. Logs capturing...</div>
+                            <div class="mt-2 text-white"><span class="animate-pulse">_</span></div>
+                        </div>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-cyber-blue text-black p-4 font-bold font-mono text-center rounded shadow-lg animate-float hidden md:block">
+                            <div class="text-2xl">98%</div>
+                            <div class="text-xs uppercase">Risk Reduction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="py-24 bg-cyber-dark tech-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Content Side -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-8">Why <span class="text-cyber-green">DosoNet?</span></h2>
+                    <p class="text-gray-400 text-lg mb-12">
+                        We don't just patch holes; we build resilient architectures. In an era where data is the new currency, DosoNet stands as the vault guard. Our team consists of ethical hackers, compliance auditors, and seasoned CISOs dedicated to your digital sovereignty.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-4 border border-white/5 bg-black/50 hover:border-cyber-green transition-colors">
+                            <i class="fas fa-certificate text-2xl text-cyber-green mb-2"></i>
+                            <h3 class="font-mono text-white text-sm">Certified Experts</h3>
+                        </div>
+                        <div class="p-4 border border-white/5 bg-black/50 hover:border-cyber-green transition-colors">
+                            <i class="fas fa-clock text-2xl text-cyber-green mb-2"></i>
+                            <h3 class="font-mono text-white text-sm">Rapid Response</h3>
+                        </div>
+                        <div class="p-4 border border-white/5 bg-black/50 hover:border-cyber-green transition-colors">
+                            <i class="fas fa-layer-group text-2xl text-cyber-green mb-2"></i>
+                            <h3 class="font-mono text-white text-sm">Full Stack Security</h3>
+                        </div>
+                        <div class="p-4 border border-white/5 bg-black/50 hover:border-cyber-green transition-colors">
+                            <i class="fas fa-globe text-2xl text-cyber-green mb-2"></i>
+                            <h3 class="font-mono text-white text-sm">Global Coverage</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Side -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyber-green to-cyber-blue opacity-20 blur rounded-lg group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="relative rounded-lg overflow-hidden border border-white/10 bg-black">
+                        
+                        <img src="about-image.png" 
+                             alt="DosoNet Strategic Planning Session" 
+                             class="w-full h-full object-cover transition duration-700 ease-in-out transform hover:scale-105">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA / Contact -->
+    <div id="contact" class="py-24 bg-black border-t border-white/10">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="bg-cyber-gray p-8 md:p-12 rounded-2xl border border-white/5 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-cyber-green/5 rounded-full blur-2xl -mr-16 -mt-16"></div>
+                
+                <h2 class="text-3xl font-bold text-white mb-2 text-center">Initialize Contact Protocol</h2>
+                <p class="text-center text-gray-500 mb-8 font-mono text-sm">Secure channel open. Responses typically within 4 hours.</p>
+
+                <form class="space-y-6" action="https://formsubmit.co/Dosonet@outlook.com" method="POST">
+                    <input type="hidden" name="_subject" value="New DosoNet Contact Form Submission">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-mono text-cyber-green mb-2">IDENTIFIER (NAME)</label>
+                            <input type="text" name="name" required class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none focus:ring-1 focus:ring-cyber-green transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-cyber-green mb-2">COORDINATES (EMAIL)</label>
+                            <input type="email" name="email" required class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none focus:ring-1 focus:ring-cyber-green transition-colors" placeholder="name@company.com">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-mono text-cyber-green mb-2">COMM LINK (PHONE)</label>
+                            <input type="tel" name="phone" class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none focus:ring-1 focus:ring-cyber-green transition-colors" placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-cyber-green mb-2">SECTOR OF INTEREST</label>
+                            <select name="service" class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none">
+                                <option value="Vulnerability Management">Vulnerability Management</option>
+                                <option value="Vendor Risk Assessment">Vendor Risk Assessment</option>
+                                <option value="Security Training">Security Training</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono text-cyber-green mb-2">TRANSMISSION (MESSAGE)</label>
+                        <textarea name="message" rows="4" required class="w-full bg-black border border-gray-700 text-white p-3 focus:border-cyber-green focus:outline-none focus:ring-1 focus:ring-cyber-green transition-colors" placeholder="Describe your security requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-cyber-green text-black font-bold font-mono py-4 hover:bg-white transition-colors uppercase tracking-widest flex items-center justify-center gap-2 group">
+                        <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i> Send Transmission
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-center items-center">
+            <div class="mb-4 md:mb-0 text-center">
+                <div class="text-2xl font-mono font-bold text-white tracking-tighter flex items-center gap-2 justify-center">
+                    <i class="fas fa-shield-halved text-cyber-green"></i>
+                    DosoNet
+                </div>
+                <p class="text-gray-600 text-xs mt-2 font-mono">© 2026 DosoNet Security Systems. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Background Animation Script -->
+    <script>
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        // Resize handling
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight; // Full height for the hero container logic
+            // We want the canvas to actually just fill its container, handled by CSS
+            // But we need coordinate space:
+            const container = document.getElementById('canvas-container');
+            width = canvas.width = container.offsetWidth;
+            height = canvas.height = container.offsetHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        
+        // Particle Class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+                this.color = Math.random() > 0.5 ? '#00ff41' : '#00f0ff'; // Green or Blue
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        // Initialize particles
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(Math.floor(window.innerWidth / 15), 100); // Responsive count
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 255, 65, ${0.1 - distance/1500})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Draw particles
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Start
+        resize();
+        initParticles();
+        animate();
+    </script>
+</body>
+</html>
