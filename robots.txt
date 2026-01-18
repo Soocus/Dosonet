@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://dosonet.vercel.app/sitemap.xml
+Sitemap: https://dosonet.com/sitemap.xml
